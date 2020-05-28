@@ -16,6 +16,12 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField 'String', 'IMAGE_URL', '"https://image.tmdb.org/t/p/w500"'
+        buildConfigField 'String', 'BASE_URL', '"https://gateway.marvel.com/v1/public/"'
+        buildConfigField 'String', 'API_PUBLIC_KEY', '"1b9d8c818ff5b187ba2a5eced6754f87"'
+        buildConfigField 'String', 'API_PRIVATE_KEY', '"d8ff68a2e11c252d77a7a0def334cce051e727bc"'
+        buildConfigField 'Integer', 'CHARACTER_LIMIT', '10'
+
+
     }
 
     compileOptions {
@@ -33,7 +39,6 @@ android {
         enabled = true
     }
 }
-
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -43,9 +48,21 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
     implementation 'androidx.navigation:navigation-fragment-ktx:2.2.2'
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.2'
+
     kapt 'com.android.databinding:compiler:3.1.4'
+
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+
+    implementation "org.koin:koin-android:$koinVersion"
+    implementation "org.koin:koin-androidx-scope:$koinVersion"
+    implementation "org.koin:koin-androidx-viewmodel:$koinVersion"
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
+
 
 }
