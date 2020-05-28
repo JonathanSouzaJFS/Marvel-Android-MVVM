@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">desafio-android-jonathan-feitosa</string>
+    <string name="app_name">Desafio Android</string>
+    <string name="title_home">Home</string>
+    <string name="title_search">Search</string>
 </resources>
