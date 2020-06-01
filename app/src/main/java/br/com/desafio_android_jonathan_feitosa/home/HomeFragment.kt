@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.desafio_android_jonathan_feitosa.R
 import br.com.desafio_android_jonathan_feitosa.base.BaseFragment
+import br.com.desafio_android_jonathan_feitosa.heroes.HeroDetailActivity
 import br.com.desafio_android_jonathan_feitosa.models.Hero
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -106,10 +107,8 @@ class HomeFragment : BaseFragment() {
             })
 
             adapter = UpcomingAdapter(context, hList) { hero ->
-                Toast.makeText(
-                    requireActivity(), hero.name,
-                    Toast.LENGTH_LONG
-                ).show()
+                val intent = HeroDetailActivity.getStartIntent(requireActivity(), hero)
+                requireActivity().startActivity(intent)
             }
         }
     }
