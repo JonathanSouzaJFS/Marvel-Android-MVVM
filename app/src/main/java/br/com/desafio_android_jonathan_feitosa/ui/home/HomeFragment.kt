@@ -1,4 +1,4 @@
-package br.com.desafio_android_jonathan_feitosa.home
+package br.com.desafio_android_jonathan_feitosa.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,12 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.desafio_android_jonathan_feitosa.R
 import br.com.desafio_android_jonathan_feitosa.base.BaseFragment
-import br.com.desafio_android_jonathan_feitosa.heroes.HeroDetailActivity
+import br.com.desafio_android_jonathan_feitosa.ui.hero.HeroDetailFragment
 import br.com.desafio_android_jonathan_feitosa.models.Hero
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -107,8 +109,9 @@ class HomeFragment : BaseFragment() {
             })
 
             adapter = UpcomingAdapter(context, hList) { hero ->
-                val intent = HeroDetailActivity.getStartIntent(requireActivity(), hero)
-                requireActivity().startActivity(intent)
+                val bundle = Bundle()
+                bundle.putParcelable("hero", hero)
+                findNavController().navigate(R.id.action_navigation_home_to_heroDetailFragment, bundle)
             }
         }
     }

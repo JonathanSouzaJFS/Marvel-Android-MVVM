@@ -16,4 +16,4 @@ data class Hero  (
     var stories: Stories?,
     var events: Events?,
     var urls:List<ItemUrls>?
-    ): Parcelable
+): Parcelable

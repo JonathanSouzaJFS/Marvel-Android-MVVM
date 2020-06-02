@@ -38,7 +38,7 @@ fun createOkHttpClient(): OkHttpClient {
 }
 
 fun addRequestParameters(chain: Interceptor.Chain): Response {
-    var request = chain.request()
+    val request = chain.request()
     val builder = request.url().newBuilder()
 
     builder

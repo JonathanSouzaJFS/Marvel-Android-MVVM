@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="br.com.desafio_android_jonathan_feitosa.ui.hq.HqFragment">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -34,7 +35,7 @@
                     >
 
                     <ImageView
-                        android:id="@+id/imgDescription"
+                        android:id="@+id/imgDescription_cmcs"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@drawable/placeholder"
@@ -60,7 +61,7 @@
                 >
 
                 <TextView
-                    android:id="@+id/tv_overview_txt"
+                    android:id="@+id/tv_overview_cmcs"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
@@ -72,10 +73,10 @@
                     app:fontFamily="sans-serif-condensed-medium" />
 
                 <TextView
-                    android:id="@+id/tv_description_txt"
+                    android:id="@+id/tv_description_cmcs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv_overview_txt"
+                    android:layout_below="@+id/tv_overview_cmcs"
                     android:layout_marginStart="@dimen/text_margin"
                     android:layout_marginTop="@dimen/text_margin"
                     android:layout_marginEnd="@dimen/text_margin"
@@ -83,13 +84,13 @@
                     android:textColor="#000000"
                     android:textColorHint="#000000" />
 
-                <Button
-                    android:id="@+id/button"
+                <TextView
+                    android:id="@+id/txtPrice_cmcs"
                     android:layout_width="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv_description_txt"
-                    android:text="Button" />
+                    android:layout_below="@+id/tv_description_cmcs"
+                    android:text="R$Price" />
 
             </RelativeLayout>
 

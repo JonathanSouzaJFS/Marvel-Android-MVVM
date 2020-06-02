@@ -1,4 +1,4 @@
-package br.com.desafio_android_jonathan_feitosa.home
+package br.com.desafio_android_jonathan_feitosa.ui.home
 
 import android.content.Context
 import android.view.LayoutInflater

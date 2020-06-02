@@ -7,8 +7,26 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="br.com.desafio_android_jonathan_feitosa.home.HomeFragment"
+        android:name="br.com.desafio_android_jonathan_feitosa.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_heroDetailFragment"
+            app:destination="@id/heroDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/heroDetailFragment"
+        android:name="br.com.desafio_android_jonathan_feitosa.ui.hero.HeroDetailFragment"
+        android:label="fragment_hero_detail"
+        tools:layout="@layout/fragment_hero_detail" >
+        <action
+            android:id="@+id/action_heroDetailFragment_to_hqFragment4"
+            app:destination="@id/hqFragment4" />
+    </fragment>
+    <fragment
+        android:id="@+id/hqFragment4"
+        android:name="br.com.desafio_android_jonathan_feitosa.ui.hq.HqFragment"
+        android:label="fragment_comics"
+        tools:layout="@layout/fragment_comics" />
 
 </navigation>
