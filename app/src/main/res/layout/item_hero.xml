@@ -32,15 +32,15 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="112dp"
             android:layout_height="wrap_content"
-            android:background="@color/colorWhite">
+            android:background="@color/transparent">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_top_score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@color/colorWhite"
-                android:textColor="@color/colorPrimary"
+                android:gravity="center"
+                android:background="@color/transparent"
+                android:textColor="@color/colorBackground"
                 android:text="@{hero.name}"
                 android:textSize="14sp"
                 android:textStyle="bold"

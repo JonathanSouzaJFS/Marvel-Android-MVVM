@@ -1,21 +1,17 @@
 package br.com.desafio_android_jonathan_feitosa.repository
 
-import android.util.Log
-import br.com.desafio_android_jonathan_feitosa.models.ComicsId
+import br.com.desafio_android_jonathan_feitosa.models.ComicsResponse
 
 
 interface ComicsRepository {
-    suspend fun getComicsId(comicId: Int): Pair< List<ComicsId>?, Int>
+    suspend fun getComicsId(comicId: String): Pair<List<ComicsResponse.Data.Result>, String>
 }
 
 class ComicsRepositoryImpl(private val service: IServiceRetrofit): ComicsRepository{
 
-    override suspend fun getComicsId(comicId:Int): Pair< List<ComicsId>?, Int> {
+    override suspend fun getComicsId(comicId:String): Pair<List<ComicsResponse.Data.Result>, String> {
         val result = service.getComicsId(comicId)
 
-        Log.i("ResultadoJFS", result.toString());
-        Log.i("ResultadoJFS", result.results.toString());
-
-        return Pair(result.results, result.total)
+        return Pair(result.data.results, result.data.total)
     }
 }

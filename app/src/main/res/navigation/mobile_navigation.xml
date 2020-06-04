@@ -12,21 +12,39 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_navigation_home_to_heroDetailFragment"
-            app:destination="@id/heroDetailFragment" />
+            app:destination="@id/heroDetailFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"
+            app:popUpTo="@+id/navigation_home" />
     </fragment>
     <fragment
         android:id="@+id/heroDetailFragment"
         android:name="br.com.desafio_android_jonathan_feitosa.ui.hero.HeroDetailFragment"
-        android:label="fragment_hero_detail"
+        android:label="Hero Details"
         tools:layout="@layout/fragment_hero_detail" >
         <action
             android:id="@+id/action_heroDetailFragment_to_hqFragment4"
-            app:destination="@id/hqFragment4" />
+            app:destination="@id/hqFragment4"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"
+            app:popUpTo="@+id/heroDetailFragment"/>
     </fragment>
     <fragment
         android:id="@+id/hqFragment4"
         android:name="br.com.desafio_android_jonathan_feitosa.ui.hq.HqFragment"
-        android:label="fragment_comics"
-        tools:layout="@layout/fragment_comics" />
+        android:label="HQ Details"
+        tools:layout="@layout/fragment_comics"
+        />
+
+    <fragment
+        android:id="@+id/navigation_search"
+        android:name="br.com.desafio_android_jonathan_feitosa.ui.search.SearchFragment"
+        android:label="Search"
+        tools:layout="@layout/2"
+        />
 
 </navigation>

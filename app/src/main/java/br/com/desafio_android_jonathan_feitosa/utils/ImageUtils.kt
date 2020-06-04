@@ -14,7 +14,7 @@ class ImageUtils {
         @BindingAdapter("bind:picassoLoad")
         fun loadImageView(image: ImageView, thumbnail: Thumbnail?) {
             if(thumbnail!!.path.isEmpty().not() && thumbnail.extension.isEmpty().not()){
-                val url = "${thumbnail.path}/portrait_medium.${thumbnail.extension}"
+                val url = "${thumbnail.path}.${thumbnail.extension}"
 
                 Picasso.get().load(url)
                     .error(R.drawable.placeholder)

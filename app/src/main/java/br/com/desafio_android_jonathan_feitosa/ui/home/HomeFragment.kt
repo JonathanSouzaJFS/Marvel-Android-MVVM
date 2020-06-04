@@ -1,20 +1,18 @@
 package br.com.desafio_android_jonathan_feitosa.ui.home
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import androidx.lifecycle.Observer
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import br.com.desafio_android_jonathan_feitosa.BuildConfig.CHARACTER_LIMIT
 import br.com.desafio_android_jonathan_feitosa.R
 import br.com.desafio_android_jonathan_feitosa.base.BaseFragment
-import br.com.desafio_android_jonathan_feitosa.ui.hero.HeroDetailFragment
 import br.com.desafio_android_jonathan_feitosa.models.Hero
+import br.com.desafio_android_jonathan_feitosa.utils.hasInternet
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -34,15 +32,24 @@ class HomeFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
-    override fun checkConnection() {
-        homeViewModel.getUpcomingList(pageLoad)
+    override fun checkConnection(){
+        if(hasInternet(activity)){
+            homeViewModel.getUpcomingList(pageLoad)
+        }else{
+            Toast.makeText(
+                requireActivity(), "[Error]: Connection not found!",
+                Toast.LENGTH_LONG
+            ).show()
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
+        requireActivity().window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
         setupRecyclerView()
 
@@ -100,7 +107,7 @@ class HomeFragment : BaseFragment() {
                             if (pastVisiblesItems >= totalItemCount - 1) {
 
                                 loading = true
-                                pageLoad++
+                                pageLoad+= CHARACTER_LIMIT
                                 checkConnection()
                             }
                         }
