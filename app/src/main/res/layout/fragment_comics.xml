@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="br.com.desafio_android_jonathan_feitosa.ui.hq.HqFragment">
+    xmlns:bind="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="comics"
             type="br.com.desafio_android_jonathan_feitosa.models.ComicsResponse.Data.Result" />
@@ -15,7 +15,6 @@
         android:layout_height="match_parent"
         android:background="@color/colorWhite"
         android:fitsSystemWindows="true">
-
 
 
         <com.google.android.material.appbar.AppBarLayout
@@ -34,32 +33,30 @@
                 android:fitsSystemWindows="true"
                 app:contentScrim="@color/colorBlack"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                app:toolbarId="@+id/toolbar"
-                >
-
+                app:toolbarId="@+id/toolbar">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:layout_collapseMode="parallax"
-                    >
-
+                    app:layout_collapseMode="parallax">
 
                     <ImageView
                         android:id="@+id/imgDescription_cmcs"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/placeholder"
-                        android:scaleType="centerCrop"
                         android:fitsSystemWindows="true"
-                        app:layout_collapseMode="parallax" />
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/placeholder"
+                        app:layout_collapseMode="parallax"
+                        bind:picassoLoad="@{comics.thumbnail}" />
 
                     <ProgressBar
                         android:id="@+id/pb_hq_view"
                         android:layout_width="50dp"
-                        android:layout_marginTop="100dp"
-                        android:layout_centerHorizontal="true"
                         android:layout_height="50dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="100dp"
+                        android:visibility="gone"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -80,8 +77,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                >
+                android:layout_marginRight="8dp">
+
                 <TextView
                     android:id="@+id/cm_overview_cmcs"
                     android:layout_width="wrap_content"
@@ -101,19 +98,19 @@
                     android:layout_below="@+id/cm_overview_cmcs"
                     android:layout_marginStart="@dimen/text_margin"
                     android:layout_marginTop="@dimen/text_margin"
-                    android:text="@{comics.description}"
                     android:layout_marginEnd="@dimen/text_margin"
                     android:layout_marginBottom="@dimen/text_margin"
+                    android:text="@{comics.description}"
                     android:textColor="#000000"
                     android:textColorHint="#000000" />
 
                 <TextView
                     android:id="@+id/txtPrice_cmcs"
                     android:layout_width="wrap_content"
-                    android:layout_centerHorizontal="true"
                     android:layout_height="wrap_content"
-                    android:text="@{comics.prices[0].price}"
-                    android:layout_below="@+id/cm_description_cmcs" />
+                    android:layout_below="@+id/cm_description_cmcs"
+                    android:layout_centerHorizontal="true"
+                    android:text="@{comics.prices[0].price}" />
 
             </RelativeLayout>
 

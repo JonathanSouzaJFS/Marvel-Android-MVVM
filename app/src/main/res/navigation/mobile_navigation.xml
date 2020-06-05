@@ -44,7 +44,7 @@
         android:id="@+id/navigation_search"
         android:name="br.com.desafio_android_jonathan_feitosa.ui.search.SearchFragment"
         android:label="Search"
-        tools:layout="@layout/2"
+        tools:layout="@layout/fragment_search"
         />
 
 </navigation>

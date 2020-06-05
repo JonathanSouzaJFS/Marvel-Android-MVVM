@@ -7,23 +7,24 @@ import br.com.desafio_android_jonathan_feitosa.models.Hero
 import br.com.desafio_android_jonathan_feitosa.repository.UpcomingHeroesRepository
 import kotlinx.coroutines.launch
 
-class HomeViewModel(private val upcomingHeroesRepository: UpcomingHeroesRepository) : BaseViewModel() {
+class HomeViewModel(private val upcomingHeroesRepository: UpcomingHeroesRepository) :
+    BaseViewModel() {
 
-    val heroesLiveData = MutableLiveData< Pair< List<Hero>?, Int> >()
+    val heroesLiveData = MutableLiveData<Pair<List<Hero>?, Int>>()
 
-    fun getUpcomingList(offset:Int){
+    fun getUpcomingList(offset: Int) {
 
-        launch{
+        launch {
 
             loading.value = true
 
             try {
                 hasErrorLiveData.value = false
                 heroesLiveData.value = upcomingHeroesRepository.getUpcomingList(offset)
-            }catch (t:Throwable){
+            } catch (t: Throwable) {
                 hasErrorLiveData.value = true
                 i("ResultadoJFS", "[error] getUpcomingList: ${t.message}")
-            }finally {
+            } finally {
                 loading.value = false
             }
         }

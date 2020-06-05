@@ -27,7 +27,8 @@ class MainActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.setFlags(
                 WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
-                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
+            )
         }
 
         navController = findNavController(R.id.nav_host_fragment) // nav_host_fragment

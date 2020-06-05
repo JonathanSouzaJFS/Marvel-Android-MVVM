@@ -20,7 +20,8 @@ class SearchFragment : Fragment() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             requireActivity().window.setFlags(
                 WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
-                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
+            )
         }
 
         return inflater.inflate(R.layout.fragment_search, container, false)

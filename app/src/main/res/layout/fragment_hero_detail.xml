@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="br.com.desafio_android_jonathan_feitosa.ui.hero.HeroDetailFragment">
+    xmlns:bind="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="heroDetails"
+            type="br.com.desafio_android_jonathan_feitosa.models.Hero" />
+
+    </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -26,23 +32,22 @@
                 android:fitsSystemWindows="true"
                 app:contentScrim="@color/colorBlack"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                app:toolbarId="@+id/toolbar"
-                >
+                app:toolbarId="@+id/toolbar">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:layout_collapseMode="parallax"
-                    >
+                    app:layout_collapseMode="parallax">
 
                     <ImageView
                         android:id="@+id/imgDescription"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/placeholder"
-                        android:scaleType="centerCrop"
                         android:fitsSystemWindows="true"
-                        app:layout_collapseMode="parallax" />
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/placeholder"
+                        app:layout_collapseMode="parallax"
+                        bind:picassoLoad="@{heroDetails.thumbnail}" />
 
                 </RelativeLayout>
 
@@ -58,8 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                >
+                android:layout_marginRight="8dp">
 
                 <TextView
                     android:id="@+id/tv_overview_txt"
@@ -68,9 +72,9 @@
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="16dp"
-                    android:text=""
-                    android:textSize="26sp"
+                    android:text="@{heroDetails.name}"
                     android:textColor="@color/colorWhite"
+                    android:textSize="26sp"
                     app:fontFamily="sans-serif-condensed-medium" />
 
                 <TextView
@@ -82,21 +86,22 @@
                     android:layout_marginTop="@dimen/text_margin"
                     android:layout_marginEnd="@dimen/text_margin"
                     android:layout_marginBottom="@dimen/text_margin"
+                    android:text="@{heroDetails.description}"
                     android:textColor="@color/colorWhite"
                     android:textColorHint="#000000" />
 
                 <Button
                     android:id="@+id/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_description_txt"
+                    android:layout_centerHorizontal="true"
                     android:layout_margin="16dp"
                     android:background="#737B9F"
                     android:gravity="center"
                     android:padding="12dp"
                     android:text="@string/txtComicView"
-                    android:textColor="@color/colorWhite"
-                    android:layout_width="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/tv_description_txt"
-                    android:layout_height="wrap_content"/>
+                    android:textColor="@color/colorWhite" />
 
             </RelativeLayout>
 

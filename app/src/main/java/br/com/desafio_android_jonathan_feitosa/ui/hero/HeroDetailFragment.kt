@@ -9,12 +9,14 @@ import android.view.WindowManager
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import br.com.desafio_android_jonathan_feitosa.R
+import br.com.desafio_android_jonathan_feitosa.databinding.FragmentHeroDetailBinding
 import br.com.desafio_android_jonathan_feitosa.models.Hero
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_hero_detail.*
 
 
 class HeroDetailFragment : Fragment() {
+
+    lateinit var mBinding: FragmentHeroDetailBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,31 +26,25 @@ class HeroDetailFragment : Fragment() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             requireActivity().window.setFlags(
                 WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
-                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
+            )
         }
 
-        return inflater.inflate(R.layout.fragment_hero_detail, container, false)
+        mBinding = FragmentHeroDetailBinding.inflate(inflater, container, false)
+        return mBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val hero : Hero? = arguments?.getParcelable("hero")
+        val hero: Hero? = arguments?.getParcelable("hero")
 
         hero?.let {
 
-            tv_overview_txt.text = hero.name
-
             if (checkIsNull(hero.description))
-                tv_description_txt.text = getString(R.string.no_description)
+                hero.description = getString(R.string.no_description)
 
-            else
-                tv_description_txt.text = hero.description
-
-            Picasso.get()
-                .load("${hero.thumbnail!!.path}.${hero.thumbnail!!.extension}")
-                .error(R.drawable.placeholder)
-                .into(imgDescription)
+            mBinding.heroDetails = it
 
             button.setOnClickListener {
                 val bundle = Bundle()
@@ -60,8 +56,7 @@ class HeroDetailFragment : Fragment() {
 
     }
 
-    fun checkIsNull(tt : String) : Boolean{
+    fun checkIsNull(tt: String): Boolean {
         return (tt == "")
     }
-
 }

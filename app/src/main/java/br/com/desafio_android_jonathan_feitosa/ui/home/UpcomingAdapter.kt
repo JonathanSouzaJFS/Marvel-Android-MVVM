@@ -10,18 +10,20 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.desafio_android_jonathan_feitosa.databinding.ItemHeroBinding
 import br.com.desafio_android_jonathan_feitosa.models.Hero
 
-class UpcomingAdapter(context: Context,
-                      list: List<Hero>,
-                      private val onItemClickListener:((hero:Hero) -> Unit) ) : RecyclerView.Adapter<UpcomingAdapter.MyViewHolder?>() {
+class UpcomingAdapter(
+    context: Context,
+    list: List<Hero>,
+    private val onItemClickListener: ((hero: Hero) -> Unit)
+) : RecyclerView.Adapter<UpcomingAdapter.MyViewHolder?>() {
 
-    private var mContext =context
+    private var mContext = context
     private var mList = list
     private var lastPosition = -1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val inflater = LayoutInflater.from(mContext)
-        val binding = ItemHeroBinding.inflate(inflater,parent,false)
-        return MyViewHolder(binding,onItemClickListener)
+        val binding = ItemHeroBinding.inflate(inflater, parent, false)
+        return MyViewHolder(binding, onItemClickListener)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -40,12 +42,14 @@ class UpcomingAdapter(context: Context,
 
     override fun getItemCount() = mList.count()
 
-    inner class MyViewHolder(private val binding: ItemHeroBinding,
-                             private val onItemClickListener: ((hero: Hero) -> Unit)) :RecyclerView.ViewHolder(binding.root){
+    inner class MyViewHolder(
+        private val binding: ItemHeroBinding,
+        private val onItemClickListener: ((hero: Hero) -> Unit)
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bindHero(hero: Hero) {
             binding.hero = hero
-            binding.root.setOnClickListener{
+            binding.root.setOnClickListener {
                 onItemClickListener.invoke(hero)
             }
         }

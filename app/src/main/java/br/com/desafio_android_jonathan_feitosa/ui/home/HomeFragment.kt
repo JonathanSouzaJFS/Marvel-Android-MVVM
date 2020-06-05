@@ -36,10 +36,10 @@ class HomeFragment : BaseFragment() {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
-    override fun checkConnection(){
-        if(hasInternet(activity)){
+    override fun checkConnection() {
+        if (hasInternet(activity)) {
             homeViewModel.getUpcomingList(pageLoad)
-        }else{
+        } else {
             Toast.makeText(
                 requireActivity(), "[Error]: Connection not found!",
                 Toast.LENGTH_LONG
@@ -62,7 +62,7 @@ class HomeFragment : BaseFragment() {
             }
         })
 
-        homeViewModel.hasErrorLiveData.observe(viewLifecycleOwner, Observer {error ->
+        homeViewModel.hasErrorLiveData.observe(viewLifecycleOwner, Observer { error ->
             if (error) {
                 Toast.makeText(
                     requireActivity(), "Error get upcomming list !",
@@ -72,7 +72,7 @@ class HomeFragment : BaseFragment() {
         })
 
         swiperefresh.setColorSchemeResources(R.color.colorBlack)
-        swiperefresh.setOnRefreshListener{
+        swiperefresh.setOnRefreshListener {
             this.checkConnection()
         }
 
@@ -107,7 +107,7 @@ class HomeFragment : BaseFragment() {
                             if (pastVisiblesItems >= totalItemCount - 1) {
 
                                 loading = true
-                                pageLoad+= CHARACTER_LIMIT
+                                pageLoad += CHARACTER_LIMIT
                                 checkConnection()
                             }
                         }
@@ -118,7 +118,10 @@ class HomeFragment : BaseFragment() {
             adapter = UpcomingAdapter(context, hList) { hero ->
                 val bundle = Bundle()
                 bundle.putParcelable("hero", hero)
-                findNavController().navigate(R.id.action_navigation_home_to_heroDetailFragment, bundle)
+                findNavController().navigate(
+                    R.id.action_navigation_home_to_heroDetailFragment,
+                    bundle
+                )
             }
         }
     }

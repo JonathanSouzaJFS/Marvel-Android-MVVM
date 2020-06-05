@@ -4,6 +4,7 @@
     xmlns:bind="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="hero"
             type="br.com.desafio_android_jonathan_feitosa.models.Hero" />
@@ -12,10 +13,10 @@
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="8dp"
-        android:elevation="5dp"
         android:layout_margin="8dp"
-        android:foreground="?android:attr/selectableItemBackground">
+        android:elevation="5dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardCornerRadius="8dp">
 
         <ImageView
             android:id="@+id/iv_hero"
@@ -24,9 +25,9 @@
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:src="@drawable/placeholder"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             bind:picassoLoad="@{hero.thumbnail}" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,10 +39,10 @@
                 android:id="@+id/tv_top_score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:background="@color/transparent"
-                android:textColor="@color/colorBackground"
+                android:gravity="center"
                 android:text="@{hero.name}"
+                android:textColor="@color/colorBackground"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
