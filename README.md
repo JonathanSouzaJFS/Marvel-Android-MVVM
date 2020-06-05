@@ -19,6 +19,5 @@
 
 ### A ser feito:
 - Testes unitários ( devido a falta de tempo )
-- Ajustes do ViewModel/Databindig ( devido a falta de tempo tive que fazer a ultima tela setando normal a view )
 - Search ( feature )
 - DTO
